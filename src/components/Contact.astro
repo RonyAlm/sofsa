@@ -1,0 +1,98 @@
+---
+import IconMail from "./icon/IconMail.astro";
+import IconPhoneMobil from "./icon/IconPhoneMobil.astro";
+// import IconLocation from "./icon/IconLocation.astro";
+import IconArrowUpRight from "./icon/IconArrowUpRight.astro";
+---
+
+<section id="contact" class="py-20 px-4 md:px-0 flex flex-col md:flex-row gap-4">
+
+  <div class="md:w-1/2 md:mr-8">
+      <h2 class="flex items-center flex-row mb-6 text-4xl font-bold text-blue-300">
+        <IconMail class="w-8 h-8 mr-4" />
+        <span>Contacto</span>
+      </h2>
+    
+      <p class="mt-4 text-xl text-gray-300 md:max-w-lg">
+        ¿Tenés una idea o proyecto? <br> Nos encantaría escucharte y ayudarte a hacerlo realidad.
+      </p>
+
+      <div class="flex flex-col gap-4 mt-8">
+         <article class="w-full p-4 rounded-xl bg-blue-900/40 flex items-center gap-4">
+            <div class="flex items-center p-4 rounded-lg bg-blue-900/90 mr-4">
+                <IconMail class="w-6 h-6 text-blue-300" />
+            </div>
+            <div class="flex flex-col">
+                <h3 class="text-lg font-bold text-blue-300">Email</h3>
+                <p class="text-sm text-blue-300">rony.almiron.020@gmail.com</p>
+            </div>
+            
+            <a class="ml-auto p-4 rounded-full bg-blue-900/90" 
+            href="mailto:rony.almiron.020@gmail.com"
+            target="_blank">
+                <IconArrowUpRight class="w-4 h-4 text-blue-300" />
+            </a>
+         </article>
+
+        <article class="w-full p-4 rounded-xl bg-blue-900/40 flex items-center gap-4">
+            <div class="flex items-center p-4 rounded-lg bg-blue-900/90 mr-4">
+                <IconPhoneMobil class="w-6 h-6 text-blue-300" />
+            </div>
+            <div class="flex flex-col">
+                <h3 class="text-lg font-bold text-blue-300">Teléfono</h3>
+                <p class="text-sm text-blue-300">+54 9 3704 832292</p>
+            </div>
+            
+            <a class="ml-auto p-4 rounded-full bg-blue-900/90" target="_blank" href="tel:+5493704832292">
+                <IconArrowUpRight class="w-4 h-4 text-blue-300" />
+            </a>
+        </article>
+      </div>
+  </div>
+
+    <form class="md:w-1/2 flex flex-col gap-2 bg-blue-950/30 border-2 border-blue-700/80 p-2 rounded-2xl">
+        
+        <div class="w-full flex flex-col md:flex-row gap-2">
+            <label class="w-full" for="name">
+                <span class="text-blue-50 sr-only">Nombre</span>
+                <input type="text" id="name" name="name" class="w-full p-4 rounded-xl text-blue-50 bg-blue-700/20 border-2 border-transparent
+                hover:bg-blue-700/30 transition-colors duration-300" placeholder="Nombre">
+            </label>
+
+            <label class="w-full" for="phone">
+                <span class="text-blue-100 sr-only">Teléfono</span>
+                <input type="tel" id="phone" name="phone" class="w-full p-4 rounded-xl text-blue-100 bg-blue-700/20 border-2 border-transparent
+                hover:bg-blue-700/30 transition-colors duration-300" placeholder="Teléfono">
+            </label>
+        </div>
+
+        <div class="w-full flex flex-col md:flex-row gap-2">
+            <label class="w-full" for="email">
+                <span class="text-blue-50 sr-only">Email</span>
+                <input type="email" id="email" name="email" class="w-full p-4 rounded-xl text-blue-50 bg-blue-700/20 border-2 border-transparent
+                hover:bg-blue-700/30 transition-colors duration-300" placeholder="Email">
+            </label>
+
+            <label class="w-full" for="subject">
+                <span class="text-blue-100 sr-only">Asunto</span>
+                <input type="text" id="subject" name="subject" class="w-full p-4 rounded-xl text-blue-100 bg-blue-700/20 border-2 border-transparent
+                hover:bg-blue-700/30 transition-colors duration-300" placeholder="Asunto">
+            </label>
+        </div>
+
+        <label class="w-full" for="message">
+            <span class="text-blue-50 sr-only">Mensaje</span>
+            <textarea id="message" name="message" class="w-full h-52 p-4 rounded-xl text-blue-50 bg-blue-700/20 border-2 border-transparent
+            hover:bg-blue-700/30 transition-colors duration-300" placeholder="Mensaje"></textarea>
+        </label>
+
+        <button type="submit" class="w-full bg-blue-700 text-white p-4 rounded-xl">Enviar</button>
+
+
+
+
+    </form>
+  
+
+   
+</section>
