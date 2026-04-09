@@ -1,0 +1,45 @@
+---
+
+---
+
+<header class="sticky top-4 z-50 mt-4 px-2 md:px-0">
+  <div class="container mx-auto flex items-center gap-4 justify-between rounded-full w-full md:min-w-1/2
+   bg-blue-700/10 md:w-fit backdrop-blur-2xl  text-gray-300 py-2 px-4 md:pr-2">
+	  <span class="text-3xl text-blue-700 font-bold ml-2">SOFSA.</span>
+	  <nav class="hidden md:flex items-center justify-between">
+		  <ul class=" flex gap-4 px-4 group">
+			  <li><a class="hover:text-blue-700 transform hover:scale-110 transition duration-300" href="/">Home</a></li>
+			  <li><a class="hover:text-blue-700 transform hover:scale-110 transition duration-300" href="#about">Nosotros</a></li>
+			  <li><a class="hover:text-blue-700 transform hover:scale-110 transition duration-300" href="#services">Servicios</a></li>
+			  <!-- <li><a class="hover:text-blue-700 transform hover:scale-110 transition duration-300" href="#projects">Proyectos</a></li> -->
+		  </ul>
+	  </nav>
+	  <a class="hidden md:block bg-blue-700 text-white px-4 py-2 rounded-full" href="#contact">Contacto</a>
+	  <div class="md:hidden"> 
+		  <label for="menu" class="peer flex items-center">
+			<input class="hidden peer" type="checkbox" id="menu">
+			<!-- SVG Menu Open-->
+			<svg id="open" class="w-10 h-10 peer-checked:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+			</svg>
+			<!-- SVG X Close -->
+			<svg id="close" class="w-10 h-10 peer-checked:block hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+			</svg>
+		  </label>
+		<nav class="peer-has-checked:block hidden md:hidden 
+		absolute top-16 left-4 right-0 bg-blue-700/10 backdrop-blur-2xl w-11/12 rounded-2xl py-4">
+			<ul class="flex items-center flex-col gap-4">
+			  <li><a class="p-4" href="/">Home</a></li>
+			  <li><a class="p-4" href="#about">Nosotros</a></li>
+			  <li><a class="p-4" href="#service">Servicios</a></li>
+			  <!-- <li><a class="p-4" href="/projects">Proyectos</a></li> -->
+			  <li><a class="p-4 text-blue-700" href="#contact">Contacto</a></li>
+			</ul>
+		</nav>
+	  </div>
+	 
+  </div>
+  
+</header>
+

@@ -1,0 +1,86 @@
+---
+import IconCode from "./icon/IconCode.astro";
+import IconComputer from "./icon/IconComputer.astro";
+import IconGlobe from "./icon/IconGlobe.astro";
+import IconService from "./icon/IconService.astro";
+import IconShopp from "./icon/IconShopp.astro";
+import IconOffice from "./icon/IconOffice.astro";
+import IconLight from "./icon/IconLight.astro";
+import IconCog from "./icon/IconCog.astro";
+import IconChat from "./icon/IconChat.astro";
+import IconPath from "./icon/IconPath.astro";
+import IconChart from "./icon/IconChart.astro";
+
+const services = [
+    {
+        title: "Desarrollo Web a Medida",
+        description: "Creamos aplicaciones web personalizadas adaptadas a las necesidades de tu negocio.",
+        icon: IconComputer
+    },
+    {
+        title: "Software Institucional",
+        description: "Desarrollamos sistemas para organizaciones, entidades públicas o privadas, optimizando procesos internos y mejorando la gestión.",
+        icon: IconOffice
+    },
+    {
+        title: "Tiendas Online (E-commerce)",
+        description: "Creamos tiendas online completas con gestión de productos, pagos y experiencia de compra optimizada.",
+        icon: IconShopp
+    },
+    {
+        title: "Landing Pages",
+        description: "Diseñamos páginas modernas enfocadas en conversión, ideales para promocionar servicios, productos o eventos.",
+        icon: IconGlobe
+    },
+    {
+        title: "Sistemas de Gestión",
+        description: "Desarrollamos plataformas para administrar clientes, ventas, turnos, stock y más, adaptadas a tu negocio.",
+        icon: IconChart
+    },
+    {
+        title: "Frontend Moderno",
+        description: "Interfaces atractivas, rápidas y optimizadas para una excelente experiencia de usuario.",
+        icon: IconLight
+    },
+    {
+        title: "Backend & APIs",
+        description: "Diseñamos y desarrollamos APIs seguras y escalables para conectar tus sistemas.",
+        icon: IconCog
+    },          
+    {
+        title: "Consultería Técnica",
+        description: "Creamos aplicaciones moviles personalizadas para dispositivos móviles.",
+        icon: IconChat
+    },
+    {
+        title: "Mantenimiento y Soporte",
+        description: "Actualizamos, mejoramos y mantenemos tus sistemas en funcionamiento.",
+        icon: IconPath
+    },    
+]
+---
+
+<section  id="services" class="py-20 px-4 md:px-0">
+    <h2 class="flex items-center flex-row text-4xl font-bold text-blue-300">
+        <IconService class="w-8 h-8 mr-4" />
+        <span>Servicios</span>
+    </h2>
+    <p class="mt-6 text-2xl text-gray-300 md:max-w-2xl">¿Qué podemos hacer por vos?</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+        { services.map((service) => {
+            const Icon = service.icon
+            return  (
+              <article class="flex items-center flex-col p-4 py-8 rounded-2xl bg-blue-700/10 border-2 border-blue-700/80
+              hover:bg-blue-700/30 transition-colors duration-300 cursor-pointer">
+                <Icon class="w-14 h-14 text-blue-500 mb-4" />
+                <h3 class="text-center text-lg md:text-2xl font-bold text-blue-300">{service.title}</h3>
+                <p class="mt-4 text-sm text-gray-300">{service.description}</p>
+            </article>  
+            )
+          })
+        }
+    </div>
+    
+        
+</section>
