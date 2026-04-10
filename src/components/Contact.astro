@@ -1,7 +1,6 @@
 ---
 import IconMail from "./icon/IconMail.astro";
 import IconPhoneMobil from "./icon/IconPhoneMobil.astro";
-// import IconLocation from "./icon/IconLocation.astro";
 import IconArrowUpRight from "./icon/IconArrowUpRight.astro";
 ---
 
@@ -50,19 +49,19 @@ import IconArrowUpRight from "./icon/IconArrowUpRight.astro";
       </div>
   </div>
 
-    <form class="md:w-1/2 flex flex-col gap-2 bg-blue-950/30 border-2 border-blue-700/80 p-2 rounded-2xl">
+    <form id="formContact" class="md:w-1/2 flex flex-col gap-2 bg-blue-950/30 border-2 border-blue-700/80 p-2 rounded-2xl">
         
         <div class="w-full flex flex-col md:flex-row gap-2">
             <label class="w-full" for="name">
                 <span class="text-blue-50 sr-only">Nombre</span>
                 <input type="text" id="name" name="name" class="w-full p-4 rounded-xl text-blue-50 bg-blue-700/20 border-2 border-transparent
-                hover:bg-blue-700/30 transition-colors duration-300" placeholder="Nombre">
+                hover:bg-blue-700/30 transition-colors duration-300" placeholder="Nombre" required>
             </label>
 
             <label class="w-full" for="phone">
                 <span class="text-blue-100 sr-only">Teléfono</span>
                 <input type="tel" id="phone" name="phone" class="w-full p-4 rounded-xl text-blue-100 bg-blue-700/20 border-2 border-transparent
-                hover:bg-blue-700/30 transition-colors duration-300" placeholder="Teléfono">
+                hover:bg-blue-700/30 transition-colors duration-300" placeholder="Teléfono" required>
             </label>
         </div>
 
@@ -70,29 +69,89 @@ import IconArrowUpRight from "./icon/IconArrowUpRight.astro";
             <label class="w-full" for="email">
                 <span class="text-blue-50 sr-only">Email</span>
                 <input type="email" id="email" name="email" class="w-full p-4 rounded-xl text-blue-50 bg-blue-700/20 border-2 border-transparent
-                hover:bg-blue-700/30 transition-colors duration-300" placeholder="Email">
+                hover:bg-blue-700/30 transition-colors duration-300" placeholder="Email" required>
             </label>
 
             <label class="w-full" for="subject">
                 <span class="text-blue-100 sr-only">Asunto</span>
                 <input type="text" id="subject" name="subject" class="w-full p-4 rounded-xl text-blue-100 bg-blue-700/20 border-2 border-transparent
-                hover:bg-blue-700/30 transition-colors duration-300" placeholder="Asunto">
+                hover:bg-blue-700/30 transition-colors duration-300" placeholder="Asunto" required>
             </label>
         </div>
 
         <label class="w-full" for="message">
             <span class="text-blue-50 sr-only">Mensaje</span>
             <textarea id="message" name="message" class="w-full h-52 p-4 rounded-xl text-blue-50 bg-blue-700/20 border-2 border-transparent
-            hover:bg-blue-700/30 transition-colors duration-300" placeholder="Mensaje"></textarea>
+            hover:bg-blue-700/30 transition-colors duration-300" placeholder="Mensaje" required></textarea>
         </label>
 
-        <button type="submit" class="w-full bg-blue-700 text-white p-4 rounded-xl">Enviar</button>
+        <input type="text", name="company" style="display:none">
 
-
-
+        <button id="btnContact" type="submit" class="w-full bg-blue-700 text-white p-4 rounded-xl">Enviar</button>
+        
+        <p id="message" class="message font-bold text-center text-blue-500"></p>
 
     </form>
   
-
-   
 </section>
+
+<script>
+
+    const form = document.getElementById('formContact') as HTMLFormElement;
+    const btn = document.getElementById('btnContact') as HTMLButtonElement;
+    const message = document.querySelector('.message') as HTMLParagraphElement;
+
+    const handleSubmit = async (e : any) => {
+       e.preventDefault();
+
+       if(e.target.name.value === '' || e.target.phone.value === '' || e.target.subject.value === '' || e.target.email.value === '' || e.target.message.value === '') {
+            message.textContent = "Todos los campos son obligatorios";
+            message.classList.add('py-4', 'text-red-300');
+            return;
+       }
+
+        const formData = {
+            name: e.target.name.value.trim(),
+            phone: e.target.phone.value.trim(),
+            subject: e.target.subject.value.trim(),
+            email: e.target.email.value.trim(),
+            message: e.target.message.value.trim(),
+        };
+
+        btn.disabled = true;
+        btn.textContent = 'Enviando...';
+
+        const res = await fetch('/api/send-email', {
+            method: 'POST',
+            body: JSON.stringify(formData),
+        });
+
+        if (res.ok) {
+            form.reset();
+            btn.disabled = false;
+            btn.textContent = 'Enviar';
+            message.textContent = "Mensaje enviado";
+            message.classList.add('py-4');
+        }
+        
+        const data = await res.json();
+
+        if(data.error) {
+            btn.disabled = false;
+            btn.textContent = 'Enviar';
+            message.textContent = "Hubo un error al enviar, Inténtalo de nuevo";
+            message.classList.add('py-4');
+            form.reset();
+        }
+
+        setInterval(() => {
+            message.textContent = "";
+            message.classList.remove('py-4');
+        }, 5000);
+
+    };
+
+
+    form.addEventListener('submit', handleSubmit);
+
+</script>
